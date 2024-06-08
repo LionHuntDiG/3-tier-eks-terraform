@@ -6,9 +6,9 @@ resource "aws_eks_node_group" "webapp_frontend_node_group" {
   instance_types  = ["t2.medium"]
 
   scaling_config {
-    desired_size = 2
-    max_size     = 5
-    min_size     = 1
+    desired_size = 3
+    max_size     = 6
+    min_size     = 3
   }
 
   update_config {
