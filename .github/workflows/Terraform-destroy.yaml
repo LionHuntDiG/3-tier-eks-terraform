@@ -1,13 +1,13 @@
 # .github/workflows/terraform-cicd.yml
 
 name: Terraform Destroy CI/CD
-
-on:
-  push:
-    branches:
-      - main  # Or your desired deployment branch
+on: 
   workflow_dispatch:
-
+    inputs:
+      destroy:
+        description: "it is Terraform Destroy"
+        required: true
+      
 permissions:
   id-token: write
   contents: read
@@ -36,10 +36,6 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-
-      - name: Terraform Plan
-        run: terraform plan
-        continue-on-error: true # If you want to continue even if the plan fails (for logging purposes)
 
       - name: Terraform destroy
         run: terraform destroy -auto-approve
